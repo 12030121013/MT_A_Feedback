@@ -26,6 +26,10 @@
             android:name="com.example.feedback.Feedback"
             android:label="@string/title_activity_feedback" >
         </activity>
+        <activity
+            android:name="com.example.feedback.Output"
+            android:label="@string/title_activity_output" >
+        </activity>
     </application>
 
 </manifest>

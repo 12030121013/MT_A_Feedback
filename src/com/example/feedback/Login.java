@@ -23,7 +23,8 @@ public class Login extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-       setContentView(R.layout.activity_login);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
         
         
         username = (EditText) findViewById(R.id.username);
@@ -36,18 +37,19 @@ public class Login extends Activity {
 			@Override
 			public void onClick(View x) {
 				
-				if(username.getText().toString()==password.getText().toString())
+				if(username.getText().toString().equals(password.getText().toString()))
 				{
-					
-						
 						
 								
-					 Toast.makeText(getApplicationContext(),(CharSequence) password,Toast.LENGTH_LONG).show();
+	Toast.makeText(getApplicationContext(),(CharSequence)password.getText()+"validated",Toast.LENGTH_LONG).show();
 						
-						Intent feedback = new Intent(getApplicationContext(),Feedback.class);
+	Intent feedback = new Intent(getApplicationContext(),Feedback.class);
 						
-						
-						feedback.putExtra("username",username.getText().toString());
+	Bundle bundle = new Bundle();
+	bundle.putString("username",username.getText().toString());
+	feedback.putExtras(bundle);
+	
+	startActivity(feedback);
 						
 						
 						
@@ -60,19 +62,17 @@ public class Login extends Activity {
 				
 				else
 				{
-					 
-					Toast.makeText(getApplicationContext(),(CharSequence) password,Toast.LENGTH_LONG).show();
 					
 					
-					
-					Toast.makeText(getApplicationContext(),"Invalid username/password",Toast.LENGTH_LONG).show();
+Toast.makeText(getApplicationContext(),password.getText() +"Invalid username/password",Toast.LENGTH_LONG).show();
 				}
 			
 			}	
 			
 			};
 
-    
+			login.setOnClickListener(listener);
+			
     
     }
 
